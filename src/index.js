@@ -45,7 +45,7 @@ async function dogPics(img, dogo) {
     .then((res) => res.json())
     .then((info) => {
       img.src = info.message;
-      console.log(info.message);
+      //console.log(info.message);
     });
   /*let response = await fetch("https://dog.ceo/api/breed/hound/images");
   let dogos = await response.json();
