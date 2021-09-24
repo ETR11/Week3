@@ -23,7 +23,8 @@ function initializeCode() {
     content.className = "wiki-content";
     let text = document.createElement("p");
     text.className = "wiki-text";
-    text.innerHTML = (Math.random() + 1).toString(2).substring(2);
+    dogText(text, breeds[i]);
+    //text.innerHTML = (Math.random() + 1).toString(2).substring(2);
     let imgCont = document.createElement("div");
     imgCont.className = "img-container";
     let img = document.createElement("img");
@@ -45,6 +46,19 @@ async function dogPics(img, dogo) {
     .then((res) => res.json())
     .then((info) => {
       img.src = info.message;
+      //console.log(info.message);
+    });
+  /*let response = await fetch("https://dog.ceo/api/breed/hound/images");
+  let dogos = await response.json();
+
+  console.log(dogos);*/
+}
+
+async function dogText(text, dogo) {
+  await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+dogo+"?redirect=false")
+    .then((res) => res.json())
+    .then((info) => {
+      text.innerHTML = info.extract;
       //console.log(info.message);
     });
   /*let response = await fetch("https://dog.ceo/api/breed/hound/images");
